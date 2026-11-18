@@ -1,0 +1,14 @@
+{
+  "name": "adcamp-image-studio",
+  "owner": {
+    "name": "Chris Serra"
+  },
+  "description": "AdCamp Image Studio by Chris Serra.",
+  "plugins": [
+    {
+      "name": "image-studio",
+      "source": "./",
+      "description": "Makes images and finished graphics for your ads, carousels, posts and thumbnails, using Codex (ChatGPT) on your own Mac."
+    }
+  ]
+}
