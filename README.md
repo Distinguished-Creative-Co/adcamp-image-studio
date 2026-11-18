@@ -8,9 +8,19 @@ Make images and finished graphics for your ads, carousels, posts and thumbnails.
 - The Claude desktop app, with Claude working on your Mac itself. That is the Code tab with a folder on your Mac open.
 - A ChatGPT account. Making images may need a paid ChatGPT plan.
 
+## How to install
+
+Open the Claude desktop app, go to the Code tab, start a new chat and paste this. It looks technical, but you do not need to understand it. Just paste it:
+
+```
+Install AdCamp Image Studio for me from https://github.com/Distinguished-Creative-Co/adcamp-image-studio (download it as a tar.gz with curl, not with git, into a temporary folder), then run the install.sh inside it. Tell me what each step does before it runs, and ask me before anything that needs an account, a password, or a choice from me. When it is done, remind me to start a new chat and say: Set up Image Studio
+```
+
+To update later, paste the same thing again. Your pictures and brand card are kept.
+
 ## How to start
 
-Add Image Studio from the Plugins panel in Claude, using the link posted in the AdCamp group. Then tell your Claude:
+Start a new chat and tell your Claude:
 
 > Set up Image Studio
 

@@ -7,12 +7,12 @@
   "plugins": [
     {
       "name": "image-studio",
-      "version": "0.1.5",
+      "version": "0.1.6",
       "description": "Makes images and finished graphics for your ads, carousels, posts and thumbnails, using Codex (ChatGPT) on your own Mac.",
       "source": {
         "source": "archive",
-        "sha256": "3261b9629045458f51fd1c53ab0744372adc63ef1b524aba931819ad63ea30d5",
-        "url": "https://github.com/Distinguished-Creative-Co/adcamp-image-studio/releases/download/v0.1.5/AdCamp-Image-Studio-0.1.5-plugin.zip"
+        "sha256": "84c0e442eb0ac5d22c565441196332708ad3cef8dd282a0f2c9538e66fcc6abe",
+        "url": "https://github.com/Distinguished-Creative-Co/adcamp-image-studio/releases/download/v0.1.6/AdCamp-Image-Studio-0.1.6-plugin.zip"
       }
     }
   ]

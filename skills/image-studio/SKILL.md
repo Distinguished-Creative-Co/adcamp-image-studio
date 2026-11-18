@@ -19,7 +19,7 @@ The member is a chiropractor, not a technical person. Speak plainly. One step at
 
 ## The helper
 
-The helper is `tools/studio.sh` in the plugin root. The plugin root is two folders up from this skill's folder. Call it with its full path, in quotes.
+The helper is `tools/studio.sh`. Look in this skill's own folder first. If there is no `tools` folder there, Image Studio came from the Plugins panel, and the helper is in the plugin root, two folders up from this skill's folder. Wherever you find it, that folder is the "plugin root" in the commands below. Call the helper with its full path, in quotes.
 
 ```bash
 bash "<plugin root>/tools/studio.sh" check
