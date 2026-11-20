@@ -174,6 +174,7 @@ case "$cmd" in
         echo "Do not read any files on this computer other than the attached images and the file you create."
         echo
         echo "Generate one image with your image generation tool, then save it into the current folder as result.png."
+        echo "Save it with a plain file copy of the file your image tool wrote. Do not rebuild the picture from text, and do not write anything outside the current folder."
         echo
         cat "$PROMPT_FILE"
         echo
@@ -220,18 +221,19 @@ case "$cmd" in
       exit 0
     fi
 
-    # Find the image. Codex is asked to save result.png, with two fallbacks.
+    # Find the image. Codex's own copy of what its image tool made is the truth,
+    # so it is used first. result.png is only trusted when that copy is missing,
+    # because Codex has rebuilt result.png from a stale temp file and saved an old picture.
     FOUND=""
-    if [ -s "$WORK/result.png" ]; then
+    SID="$(grep -m1 -E '^session id: ' "$LOG" | sed -E 's/^session id: //')"
+    if [ -n "$SID" ] && [ -d "$HOME/.codex/generated_images/$SID" ]; then
+      FOUND="$(find "$HOME/.codex/generated_images/$SID" -type f -name '*.png' -size +10k -exec stat -f '%m %N' {} + 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2-)"
+    fi
+    if [ -z "$FOUND" ] && [ -s "$WORK/result.png" ]; then
       FOUND="$WORK/result.png"
-    else
+    fi
+    if [ -z "$FOUND" ]; then
       FOUND="$(find "$WORK" -maxdepth 2 -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' -o -name '*.webp' \) -size +10k 2>/dev/null | head -1)"
-      if [ -z "$FOUND" ]; then
-        SID="$(grep -m1 -E '^session id: ' "$LOG" | sed -E 's/^session id: //')"
-        if [ -n "$SID" ] && [ -d "$HOME/.codex/generated_images/$SID" ]; then
-          FOUND="$(find "$HOME/.codex/generated_images/$SID" -type f -name '*.png' -size +10k 2>/dev/null | head -1)"
-        fi
-      fi
     fi
     if [ -z "$FOUND" ] && { cat "$WORK/answer.txt" 2>/dev/null; tail -15 "$LOG"; } | grep -qiE "usage limit|rate limit|quota"; then
       echo "FAIL: the ChatGPT plan's Codex limit was reached. Log: $LOG"; exit 1

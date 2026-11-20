@@ -1,7 +1,7 @@
 {
   "name": "image-studio",
   "displayName": "AdCamp Image Studio",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Makes images and finished graphics for your ads, carousels, posts and thumbnails, using Codex (ChatGPT) on your own Mac.",
   "author": {
     "name": "Chris Serra"
